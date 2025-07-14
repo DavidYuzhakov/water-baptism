@@ -1,7 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api'
 import { google } from 'googleapis'
 import { configDotenv } from 'dotenv'
-import { express } from 'express'
+import express from 'express'
 
 configDotenv()
 
