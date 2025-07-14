@@ -1,8 +1,16 @@
 import TelegramBot from 'node-telegram-bot-api'
 import { google } from 'googleapis'
 import { configDotenv } from 'dotenv'
+import { express } from 'express'
 
 configDotenv()
+
+const app = express()
+
+app.get('/', (_, res) => res.send('Bot is running'))
+app.listen(3000, () => {
+  console.log('Server running on 3000 port')
+})
 
 const token = process.env.TELEGRAM_BOT_TOKEN
 const bot = new TelegramBot(token, { polling: true })
