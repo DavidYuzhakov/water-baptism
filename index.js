@@ -6,10 +6,11 @@ import express from 'express'
 configDotenv()
 
 const app = express()
+const PORT = process.env.PORT || 3000
 
 app.get('/', (_, res) => res.send('Bot is running'))
-app.listen(3000, () => {
-  console.log('Server running on 3000 port')
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`)
 })
 
 const token = process.env.TELEGRAM_BOT_TOKEN
@@ -29,7 +30,7 @@ bot.onText(/\/start/, (msg) => {
   userStates[chatId] = { step: 'name' }
 
   bot.sendPhoto(chatId, './img/intro.jpeg', {
-    caption: `Доброго времени суток, ${msg.from?.first_name}👋. Первое водное крещение 🐳 2 августа! Для регистрации, нужно ответить на несколько вопросов 🙂
+    caption: `Доброго времени суток, ${msg.from?.first_name}👋. Первое водное крещение состоится 🐳 2 августа! Для регистрации нужно ответить на несколько вопросов 🙂
     
 Укажите вашу Фамилию, Имя:`,
   })
